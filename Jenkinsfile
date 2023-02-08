@@ -9,7 +9,7 @@ pipeline {
                         //echo $PATH
                        // sh 'npm install'
                         echo 'Testing..'
-                       // sh 'npm test'
+                        sh 'npm test'
 //                         sh "docker logs ${c.id}"
 //                    }
 //                 }
