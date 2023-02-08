@@ -8,7 +8,7 @@ pipeline {
                         echo 'Building..'
                         tools {nodejs "NODEJS"} 
                         //echo $PATH
-                       // sh 'npm install'
+                        sh 'npm install'
                         echo 'Testing..'
                         sh 'npm test'
 //                         sh "docker logs ${c.id}"
