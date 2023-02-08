@@ -6,6 +6,7 @@ pipeline {
 //                 script {
 //                    docker.image('node:10-stretch').inside { c ->
                         echo 'Building..'
+                        tools {nodejs "NODEJS"} 
                         //echo $PATH
                        // sh 'npm install'
                         echo 'Testing..'
