@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    tools { nodejs "nodejs" }
+    //tools { nodejs "nodejs" }
     stages {
         stage('Tests') {
             steps {
@@ -8,7 +8,7 @@ pipeline {
 //                    docker.image('node:10-stretch').inside { c ->
                         echo 'Building..'
                         //echo $PATH
-                        sh 'npm install'
+                        sh 'npm install --only=dev'
                         echo 'Testing..'
                         sh 'npm test'
 //                         sh "docker logs ${c.id}"
