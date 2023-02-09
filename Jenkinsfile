@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to remote docker host') {
+       /* stage('Deploy to remote docker host') {
             environment {
                 DOCKER_HOST_CREDENTIALS = credentials('demo-docker')
             }
@@ -42,6 +42,6 @@ pipeline {
                     sh 'docker run -d --name node-demo -p 80:3000 shtlamrut/node-demo:current'
                 }
             }
-        }
+        }*/
     }
 }
