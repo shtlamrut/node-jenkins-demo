@@ -1,28 +1,41 @@
+#!/usr/bin/env groovy
+
 pipeline {
-  agent any
-    
-  tools {nodejs "node"}
-    
-  stages {
-        
-    stage('Git') {
-      steps {
-        git 'https://github.com/shtlamrut/node-jenkins-demo.git'
-      }
+    agent any
+    tools {
+        nodejs 'node'
     }
-     
-    stage('Build') {
-      steps {
-        sh 'npm install'
-         sh '<<Build Command>>'
-      }
-    }  
-    
-            
-    stage('Test') {
-      steps {
-        sh 'node test'
-      }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'nodejs --version'
+                sh 'npm install'
+                sh 'gulp lint'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'nodejs --version'
+                sh 'gulp test'
+            }
+        }
     }
-  }
+    post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+    }
 }
