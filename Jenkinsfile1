@@ -25,7 +25,7 @@ pipeline {
             echo 'One way or another, I have finished'
             deleteDir() /* clean up our workspace */
         }
-        success {
+       /* success {
             echo 'I succeeeded!'
         }
         unstable {
@@ -36,6 +36,6 @@ pipeline {
         }
         changed {
             echo 'Things were different before...'
-        }
+        } */
     }
 }
