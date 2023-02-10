@@ -8,9 +8,9 @@ pipeline {
 //                    docker.image('node:10-stretch').inside { c ->
                         echo 'Building..'
                         //echo $PATH
-                        //sh 'npm install'
+                        sh 'npm install'
                         echo 'Testing..'
-                        //sh 'npm test'
+                        sh 'npm test'
                          sh 'npm version'
 //                         sh "docker logs ${c.id}"
 //                    }
@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-       /* stage('Deploy to remote docker host') {
+        stage('Deploy to remote docker host') {
             environment {
                 DOCKER_HOST_CREDENTIALS = credentials('demo-docker')
             }
@@ -42,6 +42,6 @@ pipeline {
                     sh 'docker run -d --name node-demo -p 80:3000 shtlamrut/node-demo:current'
                 }
             }
-        }*/
+        }
     }
 }
