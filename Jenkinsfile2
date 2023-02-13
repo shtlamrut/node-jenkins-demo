@@ -20,11 +20,11 @@ spec:
     command:
     - cat
     tty: true
-  - name: tools
+  /*- name: tools
     image: nekottyo/kustomize-kubeval
     command:
     - cat
-    tty: true  
+    tty: true */  
 """
     }
   }
