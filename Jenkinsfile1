@@ -12,7 +12,7 @@ pipeline {
         'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
     }
     stages {
-        stage('Initialize'){
+        stage('Initialize') {
         def dockerHome = tool 'docker'
         env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
