@@ -1,9 +1,6 @@
 pipeline {
-  agent {
-    kubernetes {
-      label 'jenkins-slave'
-      defaultContainer 'jnlp'
-      tools {nodejs "node"}
+  agent any
+  tools {nodejs "node"}
       yaml """
 apiVersion: v1
 kind: Pod
@@ -19,8 +16,8 @@ spec:
     tty: true
   
 """
-    }
-  }
+    
+  
   stages {
 
     stage('Image Build') {
