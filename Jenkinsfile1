@@ -1,23 +1,15 @@
-#!/usr/bin/env groovy
-
 pipeline {
-    agent any
-    tools {
-        nodejs 'node'
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
     }
+    tools { nodejs "node" }
     stages {
         stage('Build') {
             steps {
-               // sh 'nodejs --version'
                 sh 'npm install'
-                //sh 'gulp lint'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'nodejs --version'
-                //sh 'gulp test'
             }
         }
     }
-}
