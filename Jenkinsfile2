@@ -1,5 +1,6 @@
 pipeline {
   agent {
+  tools {nodejs "node"}
     kubernetes {
       label 'jenkins-slave'
       defaultContainer 'jnlp'
