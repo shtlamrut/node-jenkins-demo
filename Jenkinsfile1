@@ -5,6 +5,10 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+     stage('Initialize') {
+        def dockerHome = tool 'docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
     environment {
         CI = 'true'
         }
@@ -12,10 +16,7 @@ pipeline {
         'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
     }
     stages {
-        stage('Initialize') {
-        def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+       
         stage('Build') {
             steps {
                 sh 'npm install'
