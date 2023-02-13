@@ -1,13 +1,9 @@
 pipeline {
     agent {
         docker {
-            image 'node:6-alpine'
+            image 'node:latest'
             args '-p 3000:3000'
         }
-    }
-     stage('Initialize') {
-        def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
     environment {
         CI = 'true'
