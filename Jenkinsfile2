@@ -1,9 +1,9 @@
 pipeline {
   agent {
-  tools {nodejs "node"}
     kubernetes {
       label 'jenkins-slave'
       defaultContainer 'jnlp'
+      tools {nodejs "node"}
       yaml """
 apiVersion: v1
 kind: Pod
