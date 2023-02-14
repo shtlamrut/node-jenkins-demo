@@ -5,12 +5,12 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-    environment {
+    /* environment {
         CI = 'true'
         }
     tools { nodejs "node" 
         'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
-    }
+    }*/
     stages {
        
         stage('Build') {
