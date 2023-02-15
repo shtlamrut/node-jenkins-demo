@@ -1,8 +1,8 @@
 pipeline {
-    agent any /* {
+    agent  {
         docker {
-            label 'docker'
-            image 'node:6-alpine'
+           // label 'docker'
+            image 'node:lts-buster-slim'
             args '-p 3000:3000'
         }
     }*/
