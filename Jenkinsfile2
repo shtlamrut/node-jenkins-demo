@@ -1,34 +1,47 @@
 pipeline {
+  environment {
+    registry = "shtlamrut/hello-world-node"
+    registryCredential = 'demo-docker'
+    dockerImage = ''
+  }
   agent any
-  tools {nodejs "node"}
-      yaml """
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: docker
-    env:
-    - name: DOCKER_HOST
-      value: 127.0.0.1
-    image: docker
-    command:
-    - cat
-    tty: true
-  
-"""
-    
-  
+  tools {nodejs "node" }
   stages {
-
-    stage('Image Build') {
-      environment {
-        DOCKERHUB_CREDS = credentials('demo-docker')
-      }
+    stage('Cloning Git') {
       steps {
-        container('docker') {
-          sh "npm install"
+        git 'https://github.com/shtlamrut/node-jenkins-demo.git'
+      }
+    }
+    stage('Build') {
+       steps {
+         sh 'npm install'
+       }
+    }
+    stage('Test') {
+      steps {
+        sh 'npm test'
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
-   }
-   }
+    stage('Deploy Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
+  }
+}
