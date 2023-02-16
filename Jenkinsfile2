@@ -12,18 +12,7 @@ pipeline {
         git 'https://github.com/shtlamrut/node-jenkins-demo.git'
       }
     }
-    /*stage('Build') {
-       steps {
-         //sh 'npm install'
-         sh 'npm version'
-       }
-    }
-    stage('Test') {
-      steps {
-        //sh 'npm test'
-        sh 'npm config ls'
-      }
-    }*/
+    
     stage('Building image') {
       steps{
         script {
