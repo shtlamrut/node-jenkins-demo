@@ -14,14 +14,14 @@ pipeline {
     }
     stage('Build') {
        steps {
-         //sh 'npm install'
-         sh 'npm version'
+         sh 'npm install'
+         //sh 'npm version'
        }
     }
     stage('Test') {
       steps {
-        //sh 'npm test'
-        sh 'npm config ls'
+        sh 'npm test'
+        //sh 'npm config ls'
       }
     }
     stage('Building image') {
