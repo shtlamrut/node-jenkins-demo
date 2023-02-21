@@ -8,6 +8,7 @@ pipeline {
     }
     tools { nodejs "node" }
            stage('Tests') {
+               
             steps {
 //                 script {
 //                    docker.image('node:10-stretch').inside { c ->
