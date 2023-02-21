@@ -1,12 +1,12 @@
 pipeline {
-    agent any /*{
+    agent {
         docker {
            // label 'docker'
             image 'node:latest'
             args '-p 3000:3000'
         }
-    }*/
-    tools { nodejs "node" }
+    }
+    //tools { nodejs "node" }
     stages {
         stage('Tests') {
             steps {
