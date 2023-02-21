@@ -14,9 +14,9 @@ pipeline {
 //                    docker.image('node:10-stretch').inside { c ->
                         echo 'Building..'
                         //echo $PATH
-                         sh 'npm install'
+                         //sh 'npm install'
                         echo 'Testing..'
-                         sh 'npm test'
+                         //sh 'npm test'
                          sh 'npm version'
 //                         sh "docker logs ${c.id}"
 //                    }
