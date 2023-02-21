@@ -26,6 +26,7 @@ pipeline {
         '''
     }
   }
+  tools {nodejs "node" }
   stages {
     stage('Tests') {           
             steps {
