@@ -48,7 +48,7 @@ pipeline {
         DOCKERHUB_CREDS = credentials('dockerHub')
       }
       steps {
-        container('docker') {
+        //container('docker') {
           def dockerImage = docker.build("shtlamrut/node-demo:latest")
           docker.withRegistry('', 'demo-docker') {
                         //dockerImage.push('master')
