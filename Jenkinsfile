@@ -7,12 +7,7 @@ pipeline {
         }
     }
     tools { nodejs "node" }
-    stages {
-        stage('Initialize'){
-        def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
-        stage('Tests') {
+           stage('Tests') {
             steps {
 //                 script {
 //                    docker.image('node:10-stretch').inside { c ->
