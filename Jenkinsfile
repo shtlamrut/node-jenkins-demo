@@ -1,38 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-      yaml '''
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    some-label: pod
-spec:
-  containers:
-    - name: docker
-      image: docker:19.03
-      command:
-        - cat
-      tty: true
-      privileged: true
-      volumeMounts:
-        - name: dockersock
-          mountPath: /var/run/docker.sock  
-        - name: sharedvolume
-          mountPath: /root/.docker      
-  volumes:
-    - name: dockersock
-      hostPath:
-        path: /var/run/docker.sock
-    - name: m2
-      hostPath:
-        path: /root/.m2
-    - name: sharedvolume
-      emptyDir: {}
-        '''
-    }
-    }
-        /*{
+    agent any  /*{
         docker {
            // label 'docker'
             image 'node:latest'
