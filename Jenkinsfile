@@ -39,8 +39,8 @@ pipeline {
             steps {
                 script {
 //                     sh 'docker login -u $DOCKER_HOST_CREDENTIALS_USR -p $DOCKER_HOST_CREDENTIALS_PSW 127.0.0.1:2375'
-                    //sh 'docker pull shtlamrut/node-demo:master'
-                    sh 'docker pull shtlamrut/node-demo'
+                    sh 'docker pull shtlamrut/node-demo:master'
+                    //sh 'docker pull shtlamrut/node-demo'
                     sh 'docker stop node-demo'
                     sh 'docker rm node-demo'
                     sh 'docker rmi shtlamrut/node-demo:current'
