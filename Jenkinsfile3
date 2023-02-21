@@ -51,6 +51,9 @@ pipeline {
           sh "docker build -t shtlamrut/nodejs-demo ."
           sh "docker login --username $DOCKERHUB_CREDS_USR --password $DOCKERHUB_CREDS_PSW" 
           sh "docker push shtlamrut/nodejs-demo"
+          sh "docker pull shtlamrut/nodejs-demo"
+          sh "docker stop nodejs-demo"
+          sh "docker rm nodejs-demo"
         }
       }
     }
