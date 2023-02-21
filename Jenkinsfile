@@ -3,21 +3,32 @@ pipeline {
         kubernetes {
       yaml '''
         apiVersion: v1
-        kind: Pod
-        spec:
-          containers:
-          - name: docker
-            image: docker:latest
-            command:
-            - cat
-            tty: true
-            volumeMounts:
-             - mountPath: /var/run/docker.sock
-               name: docker-sock
-          volumes:
-          - name: docker-sock
-            hostPath:
-              path: /var/run/docker.sock    
+kind: Pod
+metadata:
+  labels:
+    some-label: pod
+spec:
+  containers:
+    - name: docker
+      image: docker:19.03
+      command:
+        - cat
+      tty: true
+      privileged: true
+      volumeMounts:
+        - name: dockersock
+          mountPath: /var/run/docker.sock  
+        - name: sharedvolume
+          mountPath: /root/.docker      
+  volumes:
+    - name: dockersock
+      hostPath:
+        path: /var/run/docker.sock
+    - name: m2
+      hostPath:
+        path: /root/.m2
+    - name: sharedvolume
+      emptyDir: {}
         '''
     }
     }
